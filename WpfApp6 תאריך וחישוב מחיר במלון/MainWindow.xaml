@@ -1,0 +1,203 @@
+﻿<Window x:Class="WpfApp6_תאריך_וחישוב_מחיר_במלון.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp6_תאריך_וחישוב_מחיר_במלון"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image Source="/hotel-2331757_640.jpg"
+               Stretch="Fill"
+               Grid.RowSpan="6"
+               Grid.ColumnSpan="6"
+        />
+
+        <TextBlock Text="הזמנת חופשה"
+           Grid.Row="0"
+           Grid.RowSpan="2"
+           Grid.Column="1"
+           Grid.ColumnSpan="4"
+           Margin="20"
+           FontSize="50"
+           FontWeight="Bold"
+           Foreground="White"
+           FontFamily="Arial Narrow"
+           HorizontalAlignment="Center"
+           VerticalAlignment="Top"
+        />
+
+        <Border Background="GhostWhite"
+           CornerRadius="5"
+           Grid.Row="1"
+           Grid.RowSpan="5"
+           Grid.Column="0"
+           Grid.ColumnSpan="6"
+           Opacity="0.8"       
+        />
+
+        <ComboBox x:Name="Combo1" 
+          Grid.Row="4"
+          Grid.Column="3"
+          Grid.ColumnSpan="2"
+          Margin="20,10,20,10"
+          Height="40"
+          FontSize="18"
+          HorizontalContentAlignment="Center"
+          SelectionChanged="Combo1_Selection">
+
+            <!--<TextBlock Content="בחר מדינה"/>-->
+            <ComboBoxItem Content="איטליה"/>
+            <ComboBoxItem Content="יוון"/>
+            <ComboBoxItem Content="ישראל"/>
+            <ComboBoxItem Content="ניו יורק"/>
+            <ComboBoxItem Content="צרפת"/>
+            <ComboBoxItem Content="תאילנד"/>
+
+        </ComboBox>
+
+        <ComboBox x:Name="Combo2"
+          Grid.Row="4"
+          Grid.Column="1"
+          Grid.ColumnSpan="2"
+          Margin="20,10,20,10"
+          Height="40"
+          FontSize="18"
+          HorizontalContentAlignment="Center"
+          SelectionChanged="Combo2_Selection">
+
+            <!--<ComboBoxItem Content="בחר אזור"/>-->
+            <ComboBoxItem Content="צפון"/>
+            <ComboBoxItem Content="דרום"/>
+            <ComboBoxItem Content="מזרח"/>
+            <ComboBoxItem Content="מערב"/>
+            <ComboBoxItem Content="מרכז"/>
+
+        </ComboBox>
+
+
+        <ComboBox x:Name="Combo3"
+          Grid.Row="5"
+          Grid.Column="1"
+          Grid.ColumnSpan="4"
+          Margin="20,10,20,10"
+          Height="40"
+          FontSize="18"
+          HorizontalContentAlignment="Center"
+          SelectionChanged="Combo3_Selection">
+
+            <ComboBoxItem Content="Four Seasons"/>
+            <ComboBoxItem Content="Hilton"/>
+            <ComboBoxItem Content="Riu"/>
+
+        </ComboBox>
+
+        <StackPanel Grid.Row="6"
+            Grid.Column="0"
+            Grid.ColumnSpan="6"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+            <RadioButton x:Name="SingleRadio"
+                 Content="חדר יחיד (Single)"
+                 Margin="8"
+                 GroupName="RoomType"
+                 Checked="RoomType_Checked"/>
+
+            <RadioButton x:Name="DoubleRadio"
+                 Content="חדר זוגי (Double)"
+                 Margin="8"
+                 GroupName="RoomType"
+                 Checked="RoomType_Checked"/>
+
+            <RadioButton x:Name="TripleRadio"
+                 Content="חדר טריפל (Triple)"
+                 Margin="8"
+                 GroupName="RoomType"
+                 Checked="RoomType_Checked"/>
+
+            <RadioButton x:Name="QuadRadio"
+                 Content="חדר לארבעה (Quad)"
+                 Margin="8"
+                 GroupName="RoomType"
+                 Checked="RoomType_Checked"/>
+
+        </StackPanel>
+
+        <TextBlock x:Name="TreatsText"
+           Grid.Row="7"
+           Grid.Column="0"
+           Grid.ColumnSpan="6"
+           Margin="15"
+           FontSize="18"
+           TextWrapping="Wrap"
+           HorizontalAlignment="Center"
+           VerticalAlignment="Center"
+           Text="בחרי סוג חדר כדי לראות את הפינוקים"/>
+
+
+
+        <Calendar x:Name="Calendar2"
+            Grid.Column="1"
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="3"
+            SelectedDatesChanged="Calendar2_SelectedDatesChanged"
+        />
+
+        <Calendar x:Name="Calendar1"
+            Grid.Column="3"
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="3"
+            SelectionMode="SingleDate"
+            SelectedDatesChanged="Calendar1_SelectedDatesChanged"
+        />
+
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="4"
+            Text="תאריך התחלה"
+        />
+
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="2"
+            Text="תאריך סיום"
+        />
+
+        <TextBlock x:Name="NightsText"
+                   Grid.Column="2"
+                   Grid.Row="3"
+                   VerticalAlignment="Bottom"
+                   Text=":כמות לילות"/>
+        <TextBlock x:Name="PriceText"
+                   Grid.Column="4"
+                   Grid.Row="3"
+                   VerticalAlignment="Bottom"
+                   Text=":מחיר"
+        />
+
+    </Grid>
+</Window>
